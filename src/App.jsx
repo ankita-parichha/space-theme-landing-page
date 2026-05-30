@@ -60,7 +60,7 @@ export default function App() {
 
       {!loading && (
         <div className="relative min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-500 overflow-hidden font-sans">
-          
+
           {/* Nebula Canvas Star Particle Background */}
           <ParticlesBackground theme={theme} />
 
@@ -69,7 +69,7 @@ export default function App() {
 
           {/* Main Dashboard Layout */}
           <main className="relative z-10 w-full">
-            
+
             {/* Hero Astronaut & Rocket Launch section */}
             <Hero />
 
@@ -100,7 +100,7 @@ export default function App() {
 
             {/* Ground Control transmission form */}
             <ContactSection />
-            
+
           </main>
 
           {/* Copyrights and Back-to-Top trigger */}
