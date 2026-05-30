@@ -4,6 +4,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import ParticlesBackground from "./components/ParticlesBackground";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Features from "./components/Features";
 import PlanetsSection from "./components/PlanetsSection";
 import PlanetModal from "./components/PlanetModal";
 import ComparisonTool from "./components/ComparisonTool";
@@ -11,7 +12,6 @@ import OrbitAnimation from "./components/OrbitAnimation";
 import SpaceTimeline from "./components/SpaceTimeline";
 import AstronautGallery from "./components/AstronautGallery";
 import NasaStats from "./components/NasaStats";
-import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -20,7 +20,7 @@ export default function App() {
   const [activePlanet, setActivePlanet] = useState(null);
   const [comparedIds, setComparedIds] = useState(["earth", "mars"]);
 
-  // Sync theme with DOM classList
+  // Sync theme with DOM classList (defaults to dark for maximum visual impact)
   useEffect(() => {
     const root = window.document.documentElement;
     if (theme === "dark") {
@@ -39,12 +39,10 @@ export default function App() {
   const handleToggleCompare = (id) => {
     setComparedIds((prev) => {
       if (prev.includes(id)) {
-        // Minimum 1 compared
         if (prev.length <= 1) return prev;
         return prev.filter((item) => item !== id);
       }
       if (prev.length >= 2) {
-        // Swap out the first one to keep length at 2
         return [prev[1], id];
       }
       return [...prev, id];
@@ -59,7 +57,7 @@ export default function App() {
       </AnimatePresence>
 
       {!loading && (
-        <div className="relative min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-500 overflow-hidden font-sans">
+        <div className="relative min-h-screen text-slate-200 dark:text-slate-100 transition-colors duration-500 overflow-hidden font-sans bg-[#04040a]">
 
           {/* Nebula Canvas Star Particle Background */}
           <ParticlesBackground theme={theme} />
@@ -73,8 +71,8 @@ export default function App() {
             {/* Hero Astronaut & Rocket Launch section */}
             <Hero />
 
-            {/* Orbit paths animation section */}
-            <OrbitAnimation />
+            {/* Premium space-tech features checklist */}
+            <Features />
 
             {/* Planets section listing the 8 planetary bodies */}
             <PlanetsSection
@@ -82,6 +80,9 @@ export default function App() {
               onToggleCompare={handleToggleCompare}
               comparedIds={comparedIds}
             />
+
+            {/* Orbit paths animation section */}
+            <OrbitAnimation />
 
             {/* Planet details interactive comparison laboratory */}
             <ComparisonTool
@@ -97,9 +98,6 @@ export default function App() {
 
             {/* Telemetry NASA statistics dashboard */}
             <NasaStats />
-
-            {/* Ground Control transmission form */}
-            <ContactSection />
 
           </main>
 

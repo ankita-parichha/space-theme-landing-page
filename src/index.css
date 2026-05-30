@@ -3,7 +3,7 @@
 @theme {
   --font-display: "Outfit", "Inter", sans-serif;
   --font-sans: "Inter", sans-serif;
-  
+
   --color-space-black: #0B1020;
   --color-space-dark: #0f172a;
   --color-space-light: #f0f4f9;
@@ -58,20 +58,37 @@ body {
   overflow-x: hidden;
   transition: background-color 0.5s ease, color 0.5s ease;
   font-weight: 500;
-  font-size: 1.15rem; /* ~18px+ base size (20-30% size increase for body) */
-  line-height: 1.75;  /* improved spacing */
+  font-size: 1.15rem;
+  /* ~18px+ base size (20-30% size increase for body) */
+  line-height: 1.75;
+  /* improved spacing */
   letter-spacing: 0.015em;
 }
 
 /* Ensure headings are prominent and extra bold */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
-  font-weight: 800 !important; /* Bold headings */
+  font-weight: 800 !important;
+  /* Bold headings */
   letter-spacing: -0.01em;
 }
 
 /* Ensure body, tables, spans are thick and highly visible */
-p, span, select, input, textarea, td, th, label, li, a {
+p,
+span,
+select,
+input,
+textarea,
+td,
+th,
+label,
+li,
+a {
   font-weight: 500;
 }
 
@@ -79,13 +96,16 @@ p, span, select, input, textarea, td, th, label, li, a {
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--color-bg-space);
 }
+
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--color-accent-primary), var(--color-accent-secondary));
   border-radius: 5px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-accent-cyan);
 }
@@ -111,30 +131,70 @@ p, span, select, input, textarea, td, th, label, li, a {
 }
 
 /* Animation Utilities */
+.spin-slow {
+  animation-name: spin-slow;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spin-reverse {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.03); }
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
 }
 
 .animate-float {
@@ -174,4 +234,58 @@ p, span, select, input, textarea, td, th, label, li, a {
   background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #6366f1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Custom futuristic HUD overlay lines & elements */
+.tech-grid {
+  background-image: linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.tech-dot-grid {
+  background-image: radial-gradient(rgba(6, 182, 212, 0.12) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.glow-border-cyan {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+}
+
+.glow-border-purple {
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+}
+
+.glow-text-cyan {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+.glow-text-purple {
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+/* Custom indicator lines and corners for SpaceX inspired UI */
+.hud-corner {
+  position: relative;
+}
+.hud-corner::before, .hud-corner::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: rgba(6, 182, 212, 0.6);
+  border-style: solid;
+  pointer-events: none;
+}
+.hud-corner-tl::before {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+.hud-corner-br::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1px 1px 0;
 }

@@ -18,20 +18,20 @@ export default function Navbar({ theme, toggleTheme }) {
   }, []);
 
   const navLinks = [
-    { name: "Planets", href: "#planets" },
-    { name: "Compare", href: "#compare" },
-    { name: "Interactive Orbit", href: "#orbit" },
+    { name: "Features", href: "#features" },
+    { name: "Planetary Catalog", href: "#planets" },
+    { name: "Orbit Map", href: "#orbit" },
+    { name: "Compare Lab", href: "#compare" },
     { name: "Timeline", href: "#timeline" },
-    { name: "Astronauts", href: "#astronauts" },
-    { name: "NASA Stats", href: "#stats" },
-    { name: "Contact", href: "#contact" }
+    { name: "Crew Gallery", href: "#astronauts" },
+    { name: "Telemetry Stats", href: "#stats" }
   ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "py-3 bg-white/70 dark:bg-[#0B1020]/75 backdrop-blur-md border-b border-indigo-500/10 shadow-[0_4px_30px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
+          ? "py-3 bg-[#0B1020]/80 backdrop-blur-lg border-b border-cyan-500/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
           : "py-5 bg-transparent"
       }`}
     >
@@ -39,27 +39,28 @@ export default function Navbar({ theme, toggleTheme }) {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
           <div className="relative">
-            <Orbit className="h-8 w-8 text-indigo-500 group-hover:text-cyan-400 transition-colors duration-300 animate-spin-slow" />
-            <div className="absolute inset-0 bg-indigo-500/20 blur-md rounded-full group-hover:bg-cyan-400/25 transition-all duration-300" />
+            <Orbit className="h-8 w-8 text-cyan-400 group-hover:text-purple-400 transition-colors duration-300 animate-spin-slow" />
+            <div className="absolute inset-0 bg-cyan-400/20 blur-md rounded-full group-hover:bg-purple-400/25 transition-all duration-300" />
           </div>
-          <span className="text-2xl font-extrabold font-display tracking-widest text-[#0f172a] dark:text-white">
-            COSMOS
+          <span className="text-xl md:text-2xl font-black font-display tracking-widest text-white">
+            COSMOS<span className="text-cyan-400 font-bold">.OS</span>
           </span>
         </a>
 
         {/* Desktop Links */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-base font-bold text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors duration-300 relative group"
+              className="text-xs font-bold uppercase tracking-wider text-slate-350 hover:text-cyan-400 transition-colors duration-300 relative group"
             >
               {link.name}
               <span className="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-indigo-500 transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </div>
+
 
         {/* Action Controls */}
         <div className="flex items-center gap-4">
